@@ -7,9 +7,9 @@ export function Link({children, href}: {children: string, href: string}) {
 
 }
 
-export function Button({children, onclick}: {children: string, onclick: () => void}) {
+export function Button({children, onclick}: {children: string, onclick?: () => void | Promise<void> | Promise<Error> }) {
     return (
-        <button className='button' onClick={onclick}>
+        <button className='button' onClick={onclick ? onclick : () => {}}>
             {children}
         </button>
     );
